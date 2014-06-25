@@ -1,16 +1,21 @@
   ¬ершины считаютс€ пронумерованными от 0 и до V-1. ¬ход состоит из E+1 строчек. ¬ первой даны V и E Ч количество вершин и количество ребер.
 «атем идет E строчек с описанием ребер:
 
+Vertices assumed to be numbered from 0 to V-1. Login E +1 consists of lines. In the first given V and E - number of vertices and number of edges. 
+Then comes the E lines describing Ribs:
+
   V  E
   A1  B1  W1
   A2  B2  W2
    ....
   AE  BE  WE
-где (Ai, Bi) Ч i-ое ребро, Wi Ч вес этого ребра.
+
+где (Ai, Bi) Ч i-ое ребро, Wi Ч вес этого ребра.   
+where (Ai, Bi) - i-th edge, Wi - weight of the edge. 
+
 
 —копируйте входные данные из файлов input?.txt
-
-   
+Copy the files from the input data input?. Txt
 
 Sample input #1
 5 8 
@@ -31,11 +36,14 @@ Sample output #1
 
 
 ¬ывод результата:
-
 –ебра графа составл€ющего остовое дерево; 
+
+Output results: 
+Edges constituting the skeleton of the tree;
 
   A1  B1  W1
   A2  B2  W2
    ....
 
 	где (Ai, Bi) Ч i-ое ребро, Wi Ч вес этого ребра.
+where (Ai, Bi) - i-th edge, Wi - weight of the edge.
