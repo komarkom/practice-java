@@ -9,32 +9,40 @@ package kruskal;
 import java.util.Scanner;
 
 /**
- *
+ *Реализация алгоритма Крускала для поиска минимального остового дерева
+ * 
  * @author komarov
  */
 public class Kruskal {
 
     public static class Edge {
-
+/** Начальная вершина ребра */
         int n1;
+/** Конечная вершина ребра */
         int n2;
+/** Вес ребра */
         int w;
-
+/**
+ *Конструктор Edge */
         public Edge() {
             n1 = 0;
             n2 = 0;
             w = 0;
         }
     }
+/** Количество вершин графа */
     static int nV;
+/**Количество ребер графа */
     static int nE;
     static final int maxNodes = 100;
     static final int maxEdges = 20;
+/** Количество вершин графа */
     static int[] nodes;
     static int last_n;
-    /**
-     * @param args the command line arguments
-     */
+/**
+ * Возвращает было ли использовано ребро
+ * @param n 
+ */
     
     private static int getColor(int n){
         int c;
@@ -44,16 +52,23 @@ public class Kruskal {
         nodes[n] = last_n;
         return c;
     }
-    
+/**
+ * Алгоритм сортировки пузырьком
+ * @param arr массив для сортировки
+ * @param nE количество элементов в массиве
+ */
         public static void bubbleSort(Edge[] arr, int nE) {
-            /*Внешний цикл каждый раз сокращает фрагмент массива, 
-          так как внутренний цикл каждый раз ставит в конец
-          фрагмента максимальный элемент*/   
+            /**
+             * Внешний цикл каждый раз сокращает фрагмент массива, 
+             * так как внутренний цикл каждый раз ставит в конец
+             * фрагмента максимальный элемент
+             */   
             for(int i = nE ; i > 0 ; i--){
                 for(int j = 0 ; j < i ; j++){
-                    /*Сравниваем элементы попарно, 
-                      если они имеют неправильный порядок, 
-                      то меняем местами*/
+                    /** Сравниваем элементы попарно, 
+                      *если они имеют неправильный порядок, 
+                      * то меняем местами
+                      */
                     if( arr[j].w > arr[j+1].w ){
                         int tmpW = arr[j].w;
                         int tmpN1 = arr[j].n1;
@@ -71,43 +86,48 @@ public class Kruskal {
     
     public static void main(String[] args) {
         // TODO code application logic here
+/**
+ * массив объектов класса Edge
+ */
         Edge [] edges = new Edge[maxEdges];
+        
         for (int j = 0; j < maxEdges; j++)
             edges[j] = new Edge();  
+            
         nodes = new int[maxNodes];
         
         int i;
         // Считываем вход
         System.out.println("Ввведите входные данные в соответсвии с документацией в файле \"Help.txt\"");
-            Scanner in = new Scanner(System.in);
-            nV = in.nextInt();
-            nE = in.nextInt();
-            for(i = 0; i < nV; i++) nodes[i] = -1-i;
+        Scanner in = new Scanner(System.in);
+        nV = in.nextInt();
+        nE = in.nextInt();
+        for(i = 0; i < nV; i++) nodes[i] = -1-i;
 
-            for(i = 0; i < nE; i++){
-                edges[i].n1 = in.nextInt(); 
-                edges[i].n2 = in.nextInt();
-                edges[i].w = in.nextInt();                            
-            }
-
+        for(i = 0; i < nE; i++){
+            edges[i].n1 = in.nextInt(); 
+            edges[i].n2 = in.nextInt();
+            edges[i].w = in.nextInt();                            
+        }
+            
         // Алгоритм Краскала
 
         // Сортируем все ребра в порядке возрастания весов
-            bubbleSort(edges, nE);
+        bubbleSort(edges, nE);
             
-            System.out.println("Ребра минимального остового дерева по алгоритму Крускала");
+        System.out.println("Ребра минимального остового дерева по алгоритму Крускала");
             
-            for(i = 0; i < nE; i++){ 
-               int c2 = getColor(edges[i].n2);
-               if ( getColor (edges[i].n1) != c2 ){ 
-                  nodes [last_n] = edges[i].n2;
-                  System.out.print(edges[i].n1);
-                  System.out.print(" ");
-                  System.out.print(edges[i].n2);
-                  System.out.print(" ");
-                  System.out.println(edges[i].w);
-               }
+        for(i = 0; i < nE; i++){ 
+            int c2 = getColor(edges[i].n2);
+            if ( getColor (edges[i].n1) != c2 ){ 
+                nodes [last_n] = edges[i].n2;
+                System.out.print(edges[i].n1);
+                System.out.print(" ");
+                System.out.print(edges[i].n2);
+                System.out.print(" ");
+                System.out.println(edges[i].w);
             }
+        }
      }
     
 }
